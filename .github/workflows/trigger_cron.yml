@@ -16,6 +16,6 @@ jobs:
         with:
           owner: deepakcis
           repo: Cron_testing
-          github_token: ${{ secrets.AUTH_TOKEN }}
+          github_token: ${{ secrets.APT }}
           workflow_file_name: trigger_cron.yml
           
