@@ -15,7 +15,7 @@ jobs:
       - name: Trigger workflow in another GitHub account
         run: |
           curl -H "Accept: application/vnd.github.everest-preview+json" \
-            -H "Authorization: token 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" \
+            -H "Authorization: token ${{ secrets.DEEPAK_PAT }}" \
             --request POST \
             --data '{"event_type": "do-something"}' \
             https://api.github.com/deepakcis/Cron_testing/dispatches
