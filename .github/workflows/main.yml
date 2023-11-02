@@ -12,7 +12,7 @@ jobs:
         run: |
           echo "I am Workflow of Parent REPO"
       - name: Trigger deepak repo workflow
-        uses: deepakcis/Cron_testing@v1.6.1
+        uses: deepakcis/Cron_testing@ref
         with:
           owner: deepakcis
           repo: Cron_testing
