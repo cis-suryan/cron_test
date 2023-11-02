@@ -1,0 +1,25 @@
+name: 'Workflow of Parent REPO'
+
+on:  
+  workflow_dispatch:
+
+jobs: 
+  trigger_workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Workflow name
+        shell: bash
+        run: |
+          echo "I am Workflow of Parent REPO"
+      - name: Trigger deepak repo workflow
+        uses: deepakcis/Cron_testing@v1.6.1
+        with:
+          owner: deepakcis
+          repo: Cron_testing
+          github_token: ${{ secrets.PAT }}
+          workflow_file_name: trigger_cron.yml
+          ref: main
+          wait_interval: 10
+          propagate_failure: true
+          trigger_workflow: true
+          wait_workflow: true
