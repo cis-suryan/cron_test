@@ -15,7 +15,7 @@ jobs:
         uses: convictional/trigger-workflow-and-wait@v1.6.1
         with:
           owner: cis-suryan
-          repo: cron_test
+          repo: new-cron
           github_token: ${{ secrets.AUTH_TOKEN }}
-          workflow_file_name: check.yml
+          workflow_file_name: hello_word.yml
           
