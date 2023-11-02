@@ -1,0 +1,21 @@
+name: 'Workflow of Parent REPO'
+
+on:  
+  workflow_dispatch:
+
+jobs: 
+  trigger_workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Workflow name
+        shell: bash
+        run: |
+          echo "I am Workflow of Parent REPO"
+      - name: Trigger deepak repo workflow
+        uses: convictional/trigger-workflow-and-wait@v1.6.1
+        with:
+          owner: deepakcis
+          repo: Cron_testing
+          github_token: ${{ secrets.AUTH_TOKEN }}
+          workflow_file_name: trigger_cron.yml
+          
