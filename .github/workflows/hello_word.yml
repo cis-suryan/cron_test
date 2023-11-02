@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Trigger Repository B Workflow
         run: |
-          curl -X POST -H "Authorization: token ${{ secrets.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 }}" \
+          curl -X POST -H "Authorization: token ${{ secrets.PAT }}" \
             -H "Accept: application/vnd.github.everest-preview+json" \
             https://github.com/deepakcis/Cron_testing/dispatches \
             -d '{"event_type": "trigger_cron.yml"}'
