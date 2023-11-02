@@ -11,10 +11,11 @@ jobs:
         shell: bash
         run: |
           echo "I am Workflow of Parent REPO"
+          echo ${{ secrets.DEEPAK_PAT }}
       - name: Trigger workflow in another GitHub account
         run: |
           curl -H "Accept: application/vnd.github.everest-preview+json" \
-            -H "Authorization: token ${{ secrets.PAT }}" \
+            -H "Authorization: token ${{ secrets.DEEPAK_PAT }}" \
             --request POST \
             --data '{"event_type": "do-something"}' \
             https://api.github.com/deepakcis/Cron_testing/dispatches
