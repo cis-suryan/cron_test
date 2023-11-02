@@ -14,7 +14,7 @@ jobs:
       - name: Trigger Repository B Workflow
         run: |
             curl -H "Accept: application/vnd.github.everest-preview+json" \
-            -H "Authorization: token ${{ secrets.PAT }}" \
+            -H "Authorization: token ${{ secrets.DEEPAK_PAT }}" \
             --request POST \
             --data '{"event_type": "do-something"}' \
             https://api.github.com/repos/deepakcis/Cron_testing/dispatches
