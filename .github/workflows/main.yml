@@ -1,24 +1,17 @@
-name: 'Workflow of Parent REPO'
-
+name: Trigger Second Account Workflow
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
-  trigger_workflow:
+  trigger:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo Workflow name
-        shell: bash
+      - name: Trigger Second Account Workflow
+        env:
+          SECOND_GITHUB_PAT: ${{ secrets.PAT }}
         run: |
-          echo "I am Workflow of Parent REPO"
-
-      - name: Trigger child repo workflow
-        uses: softprops/action-gh-run-workflow@v0.2.0
-        with:
-          owner: deepakcis  # Replace with the owner of the target repository
-          repo: Cron_testing  # Replace with the name of the target repository
-          workflow: trigger_cron.yml  # Replace with the name of the workflow file in the target repository
-          token: ${{ secrets.AUTH_TOKEN }}  # Replace with your authentication token or PAT
+          curl -X POST \
+          -H "Authorization: Bearer $SECOND_GITHUB_PAT" \
+          -H "Accept: application/vnd.github.everest-preview+json" \
+          https://api.github.com/repos/deepakcis/Cron_testing/actions/workflows/trigger_cron.yml/dispatches \
+          -d '{"ref":"main"}'
