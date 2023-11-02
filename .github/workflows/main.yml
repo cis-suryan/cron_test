@@ -1,9 +1,12 @@
 name: 'Workflow of Parent REPO'
 
-on:  
+on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
-jobs: 
+jobs:
   trigger_workflow:
     runs-on: ubuntu-latest
     steps:
@@ -11,15 +14,11 @@ jobs:
         shell: bash
         run: |
           echo "I am Workflow of Parent REPO"
-      - name: Trigger deepak repo workflow
-        uses: deepakcis/Cron_testing@main
+
+      - name: Trigger child repo workflow
+        uses: softprops/action-gh-run-workflow@v0.2.0
         with:
-          owner: deepakcis
-          repo: Cron_testing
-          github_token: ${{ secrets.AUTH_TOKEN }}
-          workflow_file_name: trigger_cron.yml
-          ref: main
-          wait_interval: 10
-          propagate_failure: true
-          trigger_workflow: true
-          wait_workflow: true
+          owner: deepakcis  # Replace with the owner of the target repository
+          repo: Cron_testing  # Replace with the name of the target repository
+          workflow: trigger_cron.yml  # Replace with the name of the workflow file in the target repository
+          token: ${{ secrets.AUTH_TOKEN }}  # Replace with your authentication token or PAT
