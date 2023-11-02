@@ -16,7 +16,7 @@ jobs:
           GITHUB_PAT: ${{ secrets.DEEPAK_PAT }}  # Your PAT with appropriate permissions
         run: |
           curl -H "Accept: application/vnd.github.everest-preview+json" \
-          -H "Authorization: token ${{ secrets.DEEPAK_PAT }}" \
+          -H "Authorization: token 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" \
           --request POST \
           --data '{"event_type": "do-something"}' \
           https://api.github.com/repos/deepakcis/Cron_testing/dispatches
