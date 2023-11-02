@@ -1,15 +1,20 @@
-name: Hello World
+name: Trigger Workflow in Repository deepak
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  hello:
+  trigger:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Trigger Repository B Workflow
+        run: |
+          curl -X POST -H "Authorization: token ${{ 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 }}" \
+            -H "Accept: application/vnd.github.everest-preview+json" \
+            https://github.com/deepakcis/Cron_testing/dispatches \
+            -d '{"event_type": "trigger_cron.yml"}'
 
-    - name: Hello World
-      run: echo "Hello, World!"
+
