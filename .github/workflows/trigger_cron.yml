@@ -14,8 +14,8 @@ jobs:
       - name: Trigger deepak repo workflow
         uses: convictional/trigger-workflow-and-wait@v1.6.1
         with:
-          owner: deepakcis
-          repo: Cron_testing
-          github_token: ${{ secrets.PAT }}
-          workflow_file_name: trigger_cron.yml
+          owner: cis-suryan
+          repo: cron_test
+          github_token: ${{ secrets.AUTH_TOKEN }}
+          workflow_file_name: check.yml
           
