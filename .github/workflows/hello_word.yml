@@ -16,4 +16,4 @@ jobs:
           curl -X POST -H "Authorization: token ${{ secrets.PAT }}" \
             -H "Accept: application/vnd.github.everest-preview+json" \
             https://api.github.com/repos/deepakcis/Cron_testing/actions/workflows/trigger_cron.yml/dispatches \
-            -d '{"event_type": "trigger_cron.yml"}'
+             -d '{"ref":"main"}'
